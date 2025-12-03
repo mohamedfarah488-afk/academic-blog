@@ -11,13 +11,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Tajawal', sans-serif;
+    /* تأكد من أن خط Tajawal موجود في ملف HTML */
+    font-family: 'Tajawal', sans-serif; 
 }
 
 body {
     line-height: 1.8; 
     color: var(--text-color);
     background-color: #fff;
+    margin: 0; /* **حل مشكلة الحواف البيضاء** */
 }
 
 a {
@@ -37,9 +39,9 @@ ul {
 
 /* ------------------------------------------- */
 /* الهيدر والقائمة (شاشات كبيرة - الحاسوب) */
+/* الترتيب المطلوب: الشعار (يسار) - القائمة - الصورة (يمين) */
 /* ------------------------------------------- */
 header {
-    /* تم تطبيق الشفافية على الخلفية (70%) باستخدام rgba() */
     background: rgba(255, 255, 255, 0.70); 
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: fixed;
@@ -55,8 +57,7 @@ header .container {
     align-items: center;
     height: 70px;
     position: relative; 
-    /* **تعديل: إلغاء إزاحة الصورة الشخصية على الكمبيوتر لدمجها في الـ Flexbox** */
-    padding-left: 20px; 
+    padding: 0 20px; /* إزالة الـ padding-left الكبير */
 }
 
 /* زر الهامبرغر - مخفي على الشاشات الكبيرة */
@@ -64,54 +65,52 @@ header .container {
     display: none; 
 }
 
-/* تنسيق الصورة الشخصية في الـ HEADER */
-.header-profile-photo {
-    width: 50px; /* **تعديل: تصغير الحجم ليناسب شريط العنوان** */
-    height: 50px; /* **تعديل: تصغير الحجم ليناسب شريط العنوان** */
-    border-radius: 50%; 
-    object-fit: cover;
-    /* **تعديل: إلغاء خصائص Absolute لجعلها جزءاً من الـ Flexbox** */
-    position: static; 
-    transform: none; 
-    left: auto; 
-    top: auto; 
-    /* **إضافة: ضمان الترتيب** */
-    order: 3; /* يتم وضعها في نهاية العناصر */
-    /* **تعديل: تغيير لون الحد ليناسب الصورة المصغرة** */
-    border: 2px solid #007bff; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 100; 
-    margin-left: 10px; /* هامش للفصل عن الروابط */
-}
-
+/* 1. الشعار - على اليسار */
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
-    order: 1; /* الشعار أولاً */
+    order: 1; /* **التعديل: الشعار أولاً على اليسار** */
+}
+
+/* 2. القائمة - في الوسط */
+header nav {
+    order: 2; /* **التعديل: القائمة ثانياً في الوسط** */
+    flex-grow: 1; /* لتأخذ المساحة المتبقية */
 }
 
 .nav-links {
     display: flex;
     gap: 20px;
-    /* **تعديل: لجعل الروابط في اليمين وترك مساحة لـ Flexbox** */
-    justify-content: flex-end; 
-}
-
-header nav {
-    order: 2; /* القائمة في المنتصف بين الشعار والصورة */
-    flex-grow: 1; /* لجعلها تأخذ المساحة المتبقية وتدفع الصورة إلى اليمين */
+    justify-content: flex-end; /* لدفع الروابط إلى أقصى اليمين في مساحة القائمة */
 }
 
 .nav-links a {
     font-weight: bold;
     transition: color 0.3s;
-    /* تصغير خط الشريط العلوي على الحاسوب */
     font-size: 0.7rem; 
 }
 
 .nav-links a:hover {
     color: var(--primary-color);
+}
+
+/* 3. الصورة الشخصية - على اليمين */
+.header-profile-photo {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    object-fit: cover;
+    /* **التعديل: إلغاء خصائص Absolute لجعلها جزءاً من الـ Flexbox** */
+    position: static; 
+    transform: none; 
+    left: auto; 
+    top: auto; 
+    order: 3; /* **التعديل: الصورة ثالثاً على اليمين** */
+    border: 2px solid #007bff; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100; 
+    margin-left: 10px; /* هامش للفصل عن الروابط */
 }
 
 /* ------------------------------------------- */
@@ -125,27 +124,27 @@ header nav {
     text-align: center;
     padding-top: 70px; 
     background: url('academic-background.jpg') no-repeat center center; 
-    background-size: cover; 
+    background-size: cover; /* **حل مشكلة البياض: لضمان تغطية كامل العرض** */
     color: var(--dark-color); 
 }
 
 .hero h1 {
-    /* استعادة حجم خط الترحيب */
     font-size: 3rem; 
     margin-bottom: 1rem;
     color: var(--dark-color);
 }
 
-/* تنسيق اسم الأستاذ */
 .hero h2 {
     font-size: 2.5rem;
     color: var(--dark-color);
     margin-top: 10px;
 }
-/* ... باقي تنسيقات الأقسام ... */
+
+/* ... باقي تنسيقات الأقسام (Bio, Articles, etc.) ... */
 
 /* ------------------------------------------- */
 /* تنسيقات الهاتف (Mobile) وقائمة الهامبرغر */
+/* الترتيب: الهمبرغر (يسار) - الشعار (وسط) - الصورة (يمين) */
 /* ------------------------------------------- */
 
 @media (max-width: 768px) {
@@ -153,27 +152,25 @@ header nav {
     /* 1. إعداد شريط العنوان للهاتف */
     header .container {
         height: 60px;
-        /* **إضافة: إلغاء الهوامش الداخلية الخاصة بالكمبيوتر** */
         padding: 0 10px; 
         justify-content: flex-start;
         gap: 20px; 
     }
 
-    /* 2. تصغير حجم الصورة الشخصية وتثبيتها في اليمين */
+    /* 2. الصورة الشخصية - على اليمين */
     .header-profile-photo {
         width: 50px;
         height: 50px;
-        /* **تعديل: تثبيتها في اليمين (على عكس التصميم الأصلي لملفاتك)** */
-        position: absolute; /* يجب أن تعود Absolute على الهاتف لتثبيتها في الزاوية */
+        position: absolute; /* يجب أن تكون Absolute على الهاتف لتثبيتها في الزاوية */
         right: 10px; /* ثبت الصورة في أقصى اليمين */
-        left: auto; /* إلغاء خاصية left */
+        left: auto; 
         top: 50%;
         transform: translateY(-50%);
         z-index: 1001; 
         border: 2px solid #007bff;
     }
     
-    /* 3. إظهار زر الهامبرغر - وضعه في أقصى اليسار */
+    /* 3. زر الهامبرغر - على اليسار */
     .nav-toggle {
         display: block; 
         background: none;
@@ -182,14 +179,14 @@ header nav {
         font-size: 1.5rem;
         cursor: pointer;
         position: absolute; 
-        left: 10px; /* **التعديل هنا: موقعه في أقصى اليسار** */
+        left: 10px; /* موقعه في أقصى اليسار */
         right: auto;
         top: 50%;
         transform: translateY(-50%);
         z-index: 1001; 
     }
     
-    /* 4. تصغير الشعار وضبط موضعه ليكون أقرب للوسط */
+    /* 4. الشعار - في الوسط */
     .logo {
         font-size: 1.2rem;
         /* إزاحة الشعار ليظهر في الوسط بين الصورة والزر */
@@ -202,16 +199,13 @@ header nav {
         display: none; 
         position: absolute;
         top: 60px; 
-        /* **تعديل: تغطية كامل العرض من اليمين لليسار** */
         right: 0;
         left: 0; 
         width: 100%;
-        /* تطبيق الشفافية (80%) */
         background-color: rgba(255, 255, 255, 0.80); 
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         z-index: 999; 
         transition: transform 0.3s ease-in-out;
-        /* إخفاء القائمة للأعلى في البداية */
         transform: translateY(-100%); 
     }
 
@@ -221,10 +215,9 @@ header nav {
         transform: translateY(0); 
     }
     
-    /* 8. تصغير حجم خط قسم الترحيب */
+    /* 8. تنسيقات قسم الـ Hero على الهاتف */
     .hero {
         font-size: 2rem; 
-        /* **إضافة: ضمان تغطية الخلفية بالكامل ومنع ظهور الحواف البيضاء** */
         background-position: center; 
         background-size: cover; 
     }
@@ -233,5 +226,12 @@ header nav {
         font-size: 1.5rem;
     }
     
-    /* ... باقي تنسيقات الهاتف ... */
+    /* 9. تنسيقات باقي العناصر على الهاتف (مثل حجم الخطوط) */
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .social-links a {
+        font-size: 1.8rem; 
+    }
 }
