@@ -15,7 +15,7 @@
 }
 
 body {
-    line-height: 1.8; /* زيادة المسافة بين السطور للقراءة الأكاديمية */
+    line-height: 1.8; 
     color: var(--text-color);
     background-color: #fff;
 }
@@ -35,9 +35,10 @@ ul {
     padding: 0 20px;
 }
 
-/* الهيدر والقائمة */
+/* ------------------------------------------- */
+/* الهيدر والقائمة (شاشات كبيرة - الحاسوب) */
+/* ------------------------------------------- */
 header {
-    /* تم إصلاح شفافية الشريط العلوي */
     background: #fff; 
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: fixed;
@@ -53,20 +54,25 @@ header .container {
     align-items: center;
     height: 70px;
     position: relative; 
+    /* إفساح المجال للصورة الشخصية */
     padding-left: 140px; 
 }
-/* تنسيق الصورة الشخصية الجديدة في الـ HEADER */
+
+/* زر الهامبرغر - مخفي على الشاشات الكبيرة */
+.nav-toggle {
+    display: none; 
+}
+
+/* تنسيق الصورة الشخصية في الـ HEADER */
 .header-profile-photo {
     width: 80px; 
     height: 80px;
     border-radius: 50%; 
     object-fit: cover;
-    
     position: absolute; 
     left: 20px; 
     top: 50%; 
     transform: translateY(-50%); 
-    
     border: 3px solid #007bff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 100; 
@@ -86,7 +92,7 @@ header .container {
 .nav-links a {
     font-weight: bold;
     transition: color 0.3s;
-    /* تصغير خط الشريط العلوي على الشاشات الكبيرة نسبياً */
+    /* تصغير خط الشريط العلوي على الحاسوب */
     font-size: 0.9rem; 
 }
 
@@ -94,7 +100,9 @@ header .container {
     color: var(--primary-color);
 }
 
+/* ------------------------------------------- */
 /* قسم الغلاف Hero */
+/* ------------------------------------------- */
 .hero {
     height: 100vh;
     display: flex;
@@ -102,15 +110,13 @@ header .container {
     justify-content: center;
     text-align: center;
     padding-top: 70px; 
-    
     background: url('academic-background.jpg') no-repeat center center; 
     background-size: cover; 
-    
     color: var(--dark-color); 
 }
 
 .hero h1 {
-    /* استعادة حجم خط الترحيب (مدونة الخطاب والثقافة) */
+    /* استعادة حجم خط الترحيب */
     font-size: 3rem; 
     margin-bottom: 1rem;
     color: var(--dark-color);
@@ -130,7 +136,6 @@ header .container {
     font-style: normal;
     margin: 25px auto; 
     padding: 10px 25px; 
-    
     border: 2px solid var(--primary-color);
     border-radius: 8px;
     display: inline-block; 
@@ -172,7 +177,9 @@ header .container {
     background: #00796b;
 }
 
+/* ------------------------------------------- */
 /* الأقسام العامة */
+/* ------------------------------------------- */
 .section {
     padding: 80px 0;
 }
@@ -195,12 +202,10 @@ header .container {
     padding: 15px 20px; 
     border-radius: 8px;
     background-color: #f0f8ff; 
-    
     text-align: justify;
     line-height: 1.7;
     margin-top: 20px; 
     margin-bottom: 20px;
-    
     overflow: visible; 
     max-width: 100%; 
 }
@@ -366,36 +371,86 @@ footer {
 }
 
 /* ------------------------------------------- */
-/* **التعديل النهائي لحل مشاكل الهاتف (Mobile Adjustments)** */
+/* تنسيقات الهاتف (Mobile) وقائمة الهامبرغر */
 /* ------------------------------------------- */
 
 @media (max-width: 768px) {
     
-    /* 1. جعل شريط العنوان أقصر */
+    /* 1. إعداد شريط العنوان للهاتف */
     header .container {
-        height: 60px; /* تقليل ارتفاع الشريط العلوي */
-        padding: 0 10px; /* تقليل الحشوة */
+        height: 60px;
+        padding: 0 10px;
+        justify-content: flex-start;
+        gap: 20px; 
     }
 
-    /* 2. تصغير حجم الصورة الشخصية في الهيدر */
+    /* 2. تصغير حجم الصورة الشخصية */
     .header-profile-photo {
         width: 50px;
         height: 50px;
         left: 5px; 
     }
     
-    /* 3. إخفاء الروابط النصية بالكامل (لحل مشكلة التداخل) */
-    header nav {
-        display: none; 
+    /* 3. إظهار زر الهامبرغر - وضعه في أقصى اليسار */
+    .nav-toggle {
+        display: block; 
+        background: none;
+        border: none;
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        cursor: pointer;
+        position: absolute; 
+        left: 10px; /* موقعه في أقصى اليسار */
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1001;
     }
     
-    /* 4. تصغير الشعار (مدونة فضاءات الوعي/مدونة الخطاب والثقافة) */
+    /* 4. تصغير الشعار وإزاحة العناصر */
     .logo {
         font-size: 1.2rem;
-        margin-right: 50px; /* لإبعاد الشعار عن الصورة الشخصية */
+        margin-right: 70px; /* إفساح المجال لزر الهامبرغر */
+    }
+
+    /* 5. إعداد القائمة المنسدلة (Navigation Menu) */
+    header nav {
+        display: none; 
+        position: absolute;
+        top: 60px; /* تحت الشريط العلوي */
+        right: 0;
+        width: 100%;
+        background-color: #fff; 
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        z-index: 999; 
+        transition: transform 0.3s ease-in-out;
+        /* إخفاء القائمة للأعلى في البداية */
+        transform: translateY(-100%); 
+    }
+
+    /* 6. تنسيق الروابط داخل القائمة */
+    .nav-links {
+        flex-direction: column; 
+        padding: 10px 0;
     }
     
-    /* 5. تصغير حجم خط قسم الترحيب على الهاتف لمنع تجاوز حدود الشاشة */
+    .nav-links li {
+        border-bottom: 1px solid #f3f4f6; 
+    }
+    
+    .nav-links a {
+        display: block;
+        padding: 10px 20px;
+        font-size: 1rem;
+        text-align: right;
+    }
+
+    /* 7. إظهار القائمة عند تفعيل فئة .active */
+    header nav.active {
+        display: block;
+        transform: translateY(0); /* إنزال القائمة لتظهر */
+    }
+    
+    /* 8. تصغير حجم خط قسم الترحيب */
     .hero h1 {
         font-size: 2rem; 
     }
@@ -408,7 +463,6 @@ footer {
         font-size: 1.1rem;
     }
     
-    /* تصغير الأيقونات الكبيرة (روابط الباحث) */
     .large-icons a {
         font-size: 2.5rem;
     }
