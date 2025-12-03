@@ -380,18 +380,21 @@ footer {
     header .container {
         height: 60px;
         padding: 0 10px;
-        justify-content: flex-start;
+        justify-content: space-between; /* تعديل ليظهر الزر على اليمين والشعار بالوسط تقريباً */
         gap: 20px; 
     }
 
-    /* 2. تصغير حجم الصورة الشخصية */
+    /* 2. تصغير حجم الصورة الشخصية وتغيير موقعها ليتوافق مع RTL */
     .header-profile-photo {
         width: 50px;
         height: 50px;
-        left: 5px; 
+        right: 5px; /* وضع الصورة في اليمين */
+        left: unset;
+        top: 50%;
+        transform: translateY(-50%);
     }
     
-    /* 3. إظهار زر الهامبرغر - وضعه في أقصى اليسار */
+    /* 3. إظهار زر الهامبرغر - وضعه في أقصى اليمين (RTL) */
     .nav-toggle {
         display: block; 
         background: none;
@@ -400,7 +403,8 @@ footer {
         font-size: 1.5rem;
         cursor: pointer;
         position: absolute; 
-        left: 10px; /* موقعه في أقصى اليسار */
+        left: 10px; /* الموضع الجديد لزر الهامبرغر في أقصى اليسار */
+        right: unset; /* إلغاء خاصية Right */
         top: 50%;
         transform: translateY(-50%);
         z-index: 1001;
@@ -409,7 +413,9 @@ footer {
     /* 4. تصغير الشعار وإزاحة العناصر */
     .logo {
         font-size: 1.2rem;
-        margin-right: 70px; /* إفساح المجال لزر الهامبرغر */
+        /* إفساح المجال للصورة الشخصية */
+        margin-right: 65px; 
+        margin-left: 0;
     }
 
     /* 5. إعداد القائمة المنسدلة (Navigation Menu) */
@@ -417,14 +423,15 @@ footer {
         display: none; 
         position: absolute;
         top: 60px; /* تحت الشريط العلوي */
-        right: 0;
+        right: 0; /* وضع القائمة المنسدلة على اليمين */
+        left: unset;
         width: 100%;
         background-color: #fff; 
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         z-index: 999; 
         transition: transform 0.3s ease-in-out;
-        /* إخفاء القائمة للأعلى في البداية */
-        transform: translateY(-100%); 
+        /* إخفاء القائمة إلى اليمين في البداية */
+        transform: translateX(100%); 
     }
 
     /* 6. تنسيق الروابط داخل القائمة */
@@ -447,7 +454,7 @@ footer {
     /* 7. إظهار القائمة عند تفعيل فئة .active */
     header nav.active {
         display: block;
-        transform: translateY(0); /* إنزال القائمة لتظهر */
+        transform: translateX(0); /* سحب القائمة لتظهر من اليمين */
     }
     
     /* 8. تصغير حجم خط قسم الترحيب */
@@ -466,4 +473,4 @@ footer {
     .large-icons a {
         font-size: 2.5rem;
     }
-}
+        }
