@@ -11,15 +11,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* تأكد من أن خط Tajawal موجود في ملف HTML */
-    font-family: 'Tajawal', sans-serif; 
+    font-family: 'Tajawal', sans-serif;
 }
 
 body {
     line-height: 1.8; 
     color: var(--text-color);
     background-color: #fff;
-    margin: 0; /* **حل مشكلة الحواف البيضاء** */
+    margin: 0; /* حل مشكلة الحواف البيضاء */
 }
 
 a {
@@ -39,7 +38,7 @@ ul {
 
 /* ------------------------------------------- */
 /* الهيدر والقائمة (شاشات كبيرة - الحاسوب) */
-/* الترتيب المطلوب: الشعار (يسار) - القائمة - الصورة (يمين) */
+/* الترتيب: الشعار (يسار) - القائمة - الصورة (يمين) */
 /* ------------------------------------------- */
 header {
     background: rgba(255, 255, 255, 0.70); 
@@ -57,7 +56,7 @@ header .container {
     align-items: center;
     height: 70px;
     position: relative; 
-    padding: 0 20px; /* إزالة الـ padding-left الكبير */
+    padding: 0 20px; 
 }
 
 /* زر الهامبرغر - مخفي على الشاشات الكبيرة */
@@ -70,19 +69,19 @@ header .container {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
-    order: 1; /* **التعديل: الشعار أولاً على اليسار** */
+    order: 1; 
 }
 
 /* 2. القائمة - في الوسط */
 header nav {
-    order: 2; /* **التعديل: القائمة ثانياً في الوسط** */
-    flex-grow: 1; /* لتأخذ المساحة المتبقية */
+    order: 2; 
+    flex-grow: 1; 
 }
 
 .nav-links {
     display: flex;
     gap: 20px;
-    justify-content: flex-end; /* لدفع الروابط إلى أقصى اليمين في مساحة القائمة */
+    justify-content: flex-end; 
 }
 
 .nav-links a {
@@ -101,16 +100,15 @@ header nav {
     height: 50px; 
     border-radius: 50%; 
     object-fit: cover;
-    /* **التعديل: إلغاء خصائص Absolute لجعلها جزءاً من الـ Flexbox** */
     position: static; 
     transform: none; 
     left: auto; 
     top: auto; 
-    order: 3; /* **التعديل: الصورة ثالثاً على اليمين** */
+    order: 3; 
     border: 2px solid #007bff; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 100; 
-    margin-left: 10px; /* هامش للفصل عن الروابط */
+    margin-left: 10px; 
 }
 
 /* ------------------------------------------- */
@@ -124,7 +122,7 @@ header nav {
     text-align: center;
     padding-top: 70px; 
     background: url('academic-background.jpg') no-repeat center center; 
-    background-size: cover; /* **حل مشكلة البياض: لضمان تغطية كامل العرض** */
+    background-size: cover; 
     color: var(--dark-color); 
 }
 
@@ -139,12 +137,10 @@ header nav {
     color: var(--dark-color);
     margin-top: 10px;
 }
-
-/* ... باقي تنسيقات الأقسام (Bio, Articles, etc.) ... */
+/* ... تنسيقات الأقسام الأخرى ... */
 
 /* ------------------------------------------- */
 /* تنسيقات الهاتف (Mobile) وقائمة الهامبرغر */
-/* الترتيب: الهمبرغر (يسار) - الشعار (وسط) - الصورة (يمين) */
 /* ------------------------------------------- */
 
 @media (max-width: 768px) {
@@ -161,7 +157,7 @@ header nav {
     .header-profile-photo {
         width: 50px;
         height: 50px;
-        position: absolute; /* يجب أن تكون Absolute على الهاتف لتثبيتها في الزاوية */
+        position: absolute; 
         right: 10px; /* ثبت الصورة في أقصى اليمين */
         left: auto; 
         top: 50%;
@@ -189,7 +185,6 @@ header nav {
     /* 4. الشعار - في الوسط */
     .logo {
         font-size: 1.2rem;
-        /* إزاحة الشعار ليظهر في الوسط بين الصورة والزر */
         margin-right: 60px; /* إزاحة لليسار بسبب وجود الصورة على اليمين */
         margin-left: 50px; /* إزاحة لليمين بسبب وجود الزر على اليسار */
     }
@@ -200,7 +195,7 @@ header nav {
         position: absolute;
         top: 60px; 
         right: 0;
-        left: 0; 
+        left: 0; /* **التعديل الأهم: لضمان التغطية الكاملة على اليسار** */
         width: 100%;
         background-color: rgba(255, 255, 255, 0.80); 
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -209,29 +204,48 @@ header nav {
         transform: translateY(-100%); 
     }
 
+    /* 6. تنسيق الروابط داخل القائمة */
+    .nav-links {
+        flex-direction: column; 
+        padding: 10px 0;
+    }
+    
+    .nav-links li {
+        border-bottom: 1px solid #f3f4f6; 
+    }
+    
+    .nav-links a {
+        display: block;
+        padding: 10px 20px;
+        font-size: 1rem;
+        text-align: right;
+    }
+
     /* 7. إظهار القائمة عند تفعيل فئة .active */
     header nav.active {
         display: block;
         transform: translateY(0); 
     }
     
-    /* 8. تنسيقات قسم الـ Hero على الهاتف */
+    /* 8. تصغير حجم خط قسم الترحيب */
     .hero {
-        font-size: 2rem; 
         background-position: center; 
         background-size: cover; 
+    }
+    
+    .hero h1 {
+        font-size: 2rem; 
     }
     
     .hero h2 {
         font-size: 1.5rem;
     }
     
-    /* 9. تنسيقات باقي العناصر على الهاتف (مثل حجم الخطوط) */
-    .section-title {
-        font-size: 1.8rem;
+    .hero .slogan {
+        font-size: 1.1rem;
     }
     
-    .social-links a {
-        font-size: 1.8rem; 
+    .large-icons a {
+        font-size: 2.5rem;
     }
 }
