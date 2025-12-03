@@ -18,6 +18,8 @@ body {
     line-height: 1.8; 
     color: var(--text-color);
     background-color: #fff;
+    /* تأكيد إزالة الهوامش الافتراضية */
+    margin: 0;
 }
 
 a {
@@ -57,6 +59,7 @@ header .container {
     position: relative; 
     /* إفساح المجال للصورة الشخصية */
     padding-left: 140px; 
+    padding-right: 20px; /* للالتزام بإعدادات الـ container العامة */
 }
 
 /* زر الهامبرغر - مخفي على الشاشات الكبيرة */
@@ -71,7 +74,9 @@ header .container {
     border-radius: 50%; 
     object-fit: cover;
     position: absolute; 
-    left: 20px; 
+    /* وضع الصورة على اليمين على الشاشات الكبيرة */
+    right: 20px; 
+    left: auto;
     top: 50%; 
     transform: translateY(-50%); 
     border: 3px solid #007bff;
@@ -83,6 +88,8 @@ header .container {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
+    /* في شاشات الحاسوب يكون الشعار على اليسار لتفسح المجال للصورة الشخصية على اليمين */
+    order: 1;
 }
 
 .nav-links {
@@ -114,6 +121,8 @@ header .container {
     background: url('academic-background.jpg') no-repeat center center; 
     background-size: cover; 
     color: var(--dark-color); 
+    /* التأكد من الالتصاق التام لمنع ظهور الحواف البيضاء */
+    background-position: center;
 }
 
 .hero h1 {
@@ -381,15 +390,22 @@ footer {
     header .container {
         height: 60px;
         padding: 0 10px;
-        justify-content: flex-start;
-        gap: 20px; 
+        /* نستخدم space-between لتوزيع العناصر على الأطراف */
+        justify-content: space-between; 
+        gap: 0; 
+        /* **إضافة: إزالة إزاحة الصورة الشخصية من اليسار (للكمبيوتر) لتجنب اقتصاص الصورة** */
+        padding-left: 10px; 
     }
 
-    /* 2. تصغير حجم الصورة الشخصية */
+    /* 2. تصغير حجم الصورة الشخصية ووضعها على اليمين */
     .header-profile-photo {
         width: 50px;
         height: 50px;
-        left: 5px; 
+        /* **تعديل: وضعها على اليمين بشكل صريح** */
+        right: 10px; 
+        left: auto; /* إلغاء خاصية left */
+        top: 50%; 
+        transform: translateY(-50%);
     }
     
     /* 3. إظهار زر الهامبرغر - وضعه في أقصى اليسار */
@@ -401,16 +417,24 @@ footer {
         font-size: 1.5rem;
         cursor: pointer;
         position: absolute; 
-        left: 10px; /* موقعه في أقصى اليسار */
+        /* **تعديل: نضعه على اليسار (كما طلبت)** */
+        left: 10px; 
+        right: auto; /* إلغاء خاصية right */
         top: 50%;
         transform: translateY(-50%);
         z-index: 1001;
     }
     
-    /* 4. تصغير الشعار وإزاحة العناصر */
+    /* 4. تصغير الشعار ووضعه في الوسط */
     .logo {
         font-size: 1.2rem;
-        margin-right: 70px; /* إفساح المجال لزر الهامبرغر */
+        font-weight: 700;
+        /* لإجبار الشعار على التمركز في الوسط (مع وجود الصورة على اليمين والزر على اليسار) */
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0; 
+        z-index: 10; /* ليظهر فوق باقي العناصر غير المطلوبة */
     }
 
     /* 5. إعداد القائمة المنسدلة (Navigation Menu) */
@@ -418,7 +442,9 @@ footer {
         display: none; 
         position: absolute;
         top: 60px; /* تحت الشريط العلوي */
-        right: 0;
+        /* **تعديل: لتبدأ من اليسار وتغطي كامل الشاشة** */
+        left: 0; 
+        right: auto; /* إلغاء خاصية right */
         width: 100%;
         /* تطبيق الشفافية (80%) */
         background-color: rgba(255, 255, 255, 0.80); 
@@ -469,5 +495,3 @@ footer {
         font-size: 2.5rem;
     }
 }
-
-
