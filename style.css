@@ -87,7 +87,7 @@ header .container {
     font-weight: bold;
     transition: color 0.3s;
     /* **التعديل 2: تصغير خط الشريط العلوي** */
-    font-size: 0.5rem; 
+    font-size: 0.7rem; 
 }
 
 .nav-links a:hover {
@@ -364,4 +364,5 @@ footer {
     padding: 20px 0;
     margin-top: auto;
 }
+
 
