@@ -179,7 +179,7 @@ header .container {
 
 .section-title {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1rem;
     margin-bottom: 40px;
     color: var(--dark-color);
 }
@@ -389,3 +389,4 @@ header {
     /* إضافة حدود سفلية للفصل بين الشريط وبقية المحتوى (اختياري) */
     border-bottom: 1px solid #ddd; 
 }
+
