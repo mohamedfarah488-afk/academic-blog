@@ -110,7 +110,7 @@ header .container {
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
     color: var(--dark-color);
 }
@@ -401,6 +401,7 @@ header {
     /* الحجم الحالي قد يكون 3rem أو أكثر، جرب التصغير */
     font-size: 3rem; 
 }
+
 
 
 
