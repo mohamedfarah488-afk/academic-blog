@@ -37,14 +37,14 @@ ul {
 
 /* الهيدر والقائمة */
 header {
-    /* تم إضافة الخلفية البيضاء لحل مشكلة الشريط الشفاف على الهاتف */
-    background: #fff;
+    /* **التعديل 1: حل مشكلة الشفافية على الهاتف** */
+    background: #fff; 
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid #ddd; /* تم إضافته للفصل بين الهيدر وباقي المحتوى */
+    border-bottom: 1px solid #ddd;
 }
 
 header .container {
@@ -53,17 +53,15 @@ header .container {
     align-items: center;
     height: 70px;
     position: relative; 
-    /* إضافة حشوة على اليسار لإبعاد باقي المحتوى عن مساحة الصورة */
     padding-left: 140px; 
 }
-/* 1. تنسيق الصورة الشخصية الجديدة في الـ HEADER */
+/* تنسيق الصورة الشخصية الجديدة في الـ HEADER */
 .header-profile-photo {
     width: 80px; 
     height: 80px;
     border-radius: 50%; 
     object-fit: cover;
     
-    /* تثبيت الصورة في أعلى اليسار */
     position: absolute; 
     left: 20px; 
     top: 50%; 
@@ -88,13 +86,15 @@ header .container {
 .nav-links a {
     font-weight: bold;
     transition: color 0.3s;
+    /* **التعديل 2: تصغير خط الشريط العلوي** */
+    font-size: 0.9rem; 
 }
 
 .nav-links a:hover {
     color: var(--primary-color);
 }
 
-/* قسم الغلاف Hero - تم تعديل الألوان والخلفية النهائية */
+/* قسم الغلاف Hero */
 .hero {
     height: 100vh;
     display: flex;
@@ -103,16 +103,15 @@ header .container {
     text-align: center;
     padding-top: 70px; 
     
-    /* الخلفية الجديدة (تأكد من اسم الملف) */
     background: url('academic-background.jpg') no-repeat center center; 
     background-size: cover; 
     
-    /* لون النص أصبح داكناً للوضوح */
     color: var(--dark-color); 
 }
 
 .hero h1 {
-    font-size: 2rem;
+    /* **التعديل 3: استعادة حجم خط الترحيب (مدونة الخطاب والثقافة)** */
+    font-size: 3rem; 
     margin-bottom: 1rem;
     color: var(--dark-color);
 }
@@ -124,7 +123,7 @@ header .container {
     margin-top: 10px;
 }
 
-/* تنسيق الشعار (Slogan) - تم إضافه الإطار الأزرق */
+/* تنسيق الشعار (Slogan) */
 .hero .slogan {
     font-size: 1.3rem; 
     color: var(--dark-color);
@@ -132,13 +131,12 @@ header .container {
     margin: 25px auto; 
     padding: 10px 25px; 
     
-    /* الإطار الأزرق */
     border: 2px solid var(--primary-color);
     border-radius: 8px;
-    display: inline-block; /* مهم جداً لتحديد عرض الإطار بحجم النص فقط */
+    display: inline-block; 
 }
 
-/* لون العنصر المضيء (مدونة الخطاب والثقافة) */
+/* لون العنصر المضيء */
 .highlight {
     color: var(--primary-color);
 }
@@ -168,7 +166,7 @@ header .container {
 .btn-small {
     padding: 8px 18px;
     font-size: 0.9rem;
-    background: #009688; /* لون مختلف للكتب */
+    background: #009688; 
 }
 .btn-small:hover {
     background: #00796b;
@@ -179,10 +177,9 @@ header .container {
     padding: 80px 0;
 }
 
-/* تم تعديل حجم الخط هنا إلى 1.8rem (كان 1rem وهو صغير جداً) */
 .section-title {
     text-align: center;
-    /* تصغير الخط من 2.5rem (المرجح) إلى 1.8rem */
+    /* **التعديل 4: تصغير خط عناوين الأقسام** */
     font-size: 1.8rem; 
     margin-bottom: 40px;
     color: var(--dark-color);
@@ -193,24 +190,21 @@ header .container {
 }
 
 /* تنسيق السيرة الذاتية */
-/* 2. تنسيق الإطار حول النص */
 .framed-bio-text {
-    border: 1px solid #007bff; /* لون الإطار */
-    padding: 15px 20px; /* المسافة الداخلية */
+    border: 1px solid #007bff; 
+    padding: 15px 20px; 
     border-radius: 8px;
-    background-color: #f0f8ff; /* خلفية فاتحة داخل الإطار */
+    background-color: #f0f8ff; 
     
     text-align: justify;
     line-height: 1.7;
     margin-top: 20px; 
     margin-bottom: 20px;
     
-    /* إزالة التنسيقات المتعلقة بالمحاذاة بجانب الصورة */
     overflow: visible; 
     max-width: 100%; 
 }
 
-/* 4. تنسيق المحتوى لضمان ظهور زر تحميل السيرة الذاتية أسفل الإطار مباشرة */
 .bio-content {
     overflow: auto; 
     display: block;
@@ -255,9 +249,7 @@ header .container {
     color: var(--primary-color);
 }
 
-/* ------------------------------------------- */
-/* تنسيقات المؤلفات والمنشورات (Books Section) - جديد */
-/* ------------------------------------------- */
+/* تنسيقات المؤلفات والمنشورات */
 .book-list {
     display: flex;
     flex-direction: column;
@@ -281,7 +273,7 @@ header .container {
     height: 200px;
     object-fit: cover;
     border-radius: 5px;
-    flex-shrink: 0; /* لمنع الصورة من الانكماش */
+    flex-shrink: 0; 
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
@@ -306,9 +298,7 @@ header .container {
     margin-bottom: 15px !important;
 }
 
-/* ------------------------------------------- */
-/* تنسيقات التغريدات والأفكار السريعة (Tweets Section) - جديد */
-/* ------------------------------------------- */
+/* تنسيقات التغريدات والأفكار السريعة */
 .tweets-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -319,7 +309,7 @@ header .container {
 .tweet-card {
     background: #fff;
     padding: 25px;
-    border-right: 5px solid var(--primary-color); /* إطار جانبي مميز */
+    border-right: 5px solid var(--primary-color); 
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     position: relative;
@@ -332,7 +322,7 @@ header .container {
     top: 15px;
     left: 15px;
     font-size: 1.5rem;
-    color: #1DA1F2; /* لون تويتر */
+    color: #1DA1F2; 
 }
 
 .tweet-card p {
