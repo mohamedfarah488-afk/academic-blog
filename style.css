@@ -39,7 +39,7 @@ ul {
 /* الهيدر والقائمة (شاشات كبيرة - الحاسوب) */
 /* ------------------------------------------- */
 header {
-    /* تم تطبيق الشفافية على الخلفية (95%) */
+    /* تم تطبيق الشفافية على الخلفية (95%) باستخدام rgba() */
     background: rgba(255, 255, 255, 0.95); 
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: fixed;
@@ -381,21 +381,18 @@ footer {
     header .container {
         height: 60px;
         padding: 0 10px;
-        justify-content: space-between;
+        justify-content: flex-start;
         gap: 20px; 
     }
 
-    /* 2. تصغير حجم الصورة الشخصية وتغيير موقعها ليتوافق مع RTL */
+    /* 2. تصغير حجم الصورة الشخصية */
     .header-profile-photo {
         width: 50px;
         height: 50px;
-        right: 5px; /* وضع الصورة في اليمين */
-        left: unset;
-        top: 50%;
-        transform: translateY(-50%);
+        left: 5px; 
     }
     
-    /* 3. إظهار زر الهامبرغر - وضعه في أقصى اليسار في HTML لكن موضعه المطلق سيكون على اليمين */
+    /* 3. إظهار زر الهامبرغر - وضعه في أقصى اليسار */
     .nav-toggle {
         display: block; 
         background: none;
@@ -404,8 +401,7 @@ footer {
         font-size: 1.5rem;
         cursor: pointer;
         position: absolute; 
-        left: 10px; /* الموضع الجديد لزر الهامبرغر في أقصى اليسار */
-        right: unset;
+        left: 10px; /* موقعه في أقصى اليسار */
         top: 50%;
         transform: translateY(-50%);
         z-index: 1001;
@@ -414,9 +410,7 @@ footer {
     /* 4. تصغير الشعار وإزاحة العناصر */
     .logo {
         font-size: 1.2rem;
-        /* الشعار سيكون بين الصورة والزر */
-        margin-right: 65px; 
-        margin-left: 0;
+        margin-right: 70px; /* إفساح المجال لزر الهامبرغر */
     }
 
     /* 5. إعداد القائمة المنسدلة (Navigation Menu) */
@@ -424,16 +418,15 @@ footer {
         display: none; 
         position: absolute;
         top: 60px; /* تحت الشريط العلوي */
-        right: 0; /* وضع القائمة المنسدلة على اليمين (RTL) */
-        left: unset;
+        right: 0;
         width: 100%;
         /* تطبيق الشفافية (98%) */
         background-color: rgba(255, 255, 255, 0.98); 
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         z-index: 999; 
         transition: transform 0.3s ease-in-out;
-        /* إخفاء القائمة إلى اليمين في البداية */
-        transform: translateX(100%); 
+        /* إخفاء القائمة للأعلى في البداية */
+        transform: translateY(-100%); 
     }
 
     /* 6. تنسيق الروابط داخل القائمة */
@@ -456,8 +449,7 @@ footer {
     /* 7. إظهار القائمة عند تفعيل فئة .active */
     header nav.active {
         display: block;
-        /* إظهار القائمة بسحبها من اليمين */
-        transform: translateX(0); 
+        transform: translateY(0); /* إنزال القائمة لتظهر */
     }
     
     /* 8. تصغير حجم خط قسم الترحيب */
