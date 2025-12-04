@@ -18,7 +18,7 @@ body {
     line-height: 1.8; 
     color: var(--text-color);
     background-color: #fff;
-    /* ******* التعديل رقم 1: منع التجاوز الأفقي ******* */
+    /* ******* التعديل الأهم: منع التجاوز الأفقي ******* */
     overflow-x: hidden; 
 }
 
@@ -35,13 +35,14 @@ ul {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
+    /* ******* الإضافة: تأكيد عرض 100% ******* */
+    width: 100%;
 }
 
 /* ------------------------------------------- */
 /* الهيدر والقائمة (شاشات كبيرة - الحاسوب) */
 /* ------------------------------------------- */
 header {
-    /* تم تطبيق الشفافية على الخلفية (70%) باستخدام rgba() */
     background: rgba(255, 255, 255, 0.70); 
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: fixed;
@@ -57,16 +58,13 @@ header .container {
     align-items: center;
     height: 70px;
     position: relative; 
-    /* إفساح المجال للصورة الشخصية */
     padding-left: 140px; 
 }
 
-/* زر الهامبرغر - مخفي على الشاشات الكبيرة */
 .nav-toggle {
     display: none; 
 }
 
-/* تنسيق الصورة الشخصية في الـ HEADER */
 .header-profile-photo {
     width: 80px; 
     height: 80px;
@@ -95,7 +93,6 @@ header .container {
 .nav-links a {
     font-weight: bold;
     transition: color 0.3s;
-    /* تصغير خط الشريط العلوي على الحاسوب */
     font-size: 0.7rem; 
 }
 
@@ -116,23 +113,24 @@ header .container {
     background: url('academic-background.jpg') no-repeat center center; 
     background-size: cover; 
     color: var(--dark-color); 
+    /* ******* الإضافة: تأمين عرض قسم الهيرو ******* */
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
 }
 
 .hero h1 {
-    /* استعادة حجم خط الترحيب */
     font-size: 3rem; 
     margin-bottom: 1rem;
     color: var(--dark-color);
 }
 
-/* تنسيق اسم الأستاذ */
 .hero h2 {
     font-size: 2.5rem;
     color: var(--dark-color);
     margin-top: 10px;
 }
 
-/* تنسيق الشعار (Slogan) */
 .hero .slogan {
     font-size: 1.3rem; 
     color: var(--dark-color);
@@ -144,7 +142,6 @@ header .container {
     display: inline-block; 
 }
 
-/* لون العنصر المضيء */
 .highlight {
     color: var(--primary-color);
 }
@@ -162,7 +159,6 @@ header .container {
 .btn:hover {
     background: #1d4ed8;
 }
-/* زر ثانوي للسيرة الذاتية */
 .btn-secondary {
     background: #6c757d; 
     margin-right: 15px;
@@ -170,7 +166,6 @@ header .container {
 .btn-secondary:hover {
     background: #5a6268;
 }
-/* زر صغير للكتب */
 .btn-small {
     padding: 8px 18px;
     font-size: 0.9rem;
@@ -189,7 +184,6 @@ header .container {
 
 .section-title {
     text-align: center;
-    /* تصغير خط عناوين الأقسام */
     font-size: 1.8rem; 
     margin-bottom: 40px;
     color: var(--dark-color);
@@ -199,7 +193,6 @@ header .container {
     background-color: var(--light-color);
 }
 
-/* تنسيق السيرة الذاتية */
 .framed-bio-text {
     border: 1px solid #007bff; 
     padding: 15px 20px; 
@@ -224,7 +217,6 @@ header .container {
     margin-top: 10px;
 }
 
-/* تنسيق الكروت (المقالات) */
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -257,7 +249,6 @@ header .container {
     color: var(--primary-color);
 }
 
-/* تنسيقات المؤلفات والمنشورات */
 .book-list {
     display: flex;
     flex-direction: column;
@@ -306,7 +297,6 @@ header .container {
     margin-bottom: 15px !important;
 }
 
-/* تنسيقات التغريدات والأفكار السريعة */
 .tweets-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -346,7 +336,6 @@ header .container {
     margin-top: 10px;
 }
 
-/* تنسيق قسم روابط الباحث (Platforms) */
 .social-links {
     display: flex;
     justify-content: center;
@@ -364,7 +353,6 @@ header .container {
     color: var(--dark-color);
 }
 
-/* الفوتر */
 footer {
     background: var(--dark-color);
     color: #fff;
@@ -383,13 +371,11 @@ footer {
     header .container {
         height: 60px;
         padding: 0 10px;
-        /* ******* التعديل رقم 2: تأكيد عرض 100% ومنع التجاوز ******* */
         width: 100%; 
         max-width: 100%;
-        /* ************************************************************ */
         display: flex; 
         justify-content: space-between; 
-        align-items: center; /* التوسيط العمودي */
+        align-items: center; 
         gap: 0;
     }
 
@@ -399,16 +385,12 @@ footer {
         height: 50px;
         border-radius: 50%;
         object-fit: cover;
-        
-        /* ******* التعديل: إلغاء الموضع المطلق والاعتماد على Flexbox ******* */
         position: static; 
         left: unset; 
         top: unset; 
         transform: unset; 
         right: unset;
-        order: 3; /* يوضع على اليمين */
-        /* ************************************************************ */
-        
+        order: 3; 
         border: 3px solid #007bff;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         z-index: 100;
@@ -422,47 +404,36 @@ footer {
         color: var(--primary-color);
         font-size: 1.5rem;
         cursor: pointer;
-        
-        /* ******* التعديل: إلغاء الموضع المطلق والاعتماد على Flexbox ******* */
         position: static; 
         left: unset; 
         top: unset;
         transform: unset;
         right: unset;
-        order: 1; /* يوضع على اليسار */
-        /* ************************************************************ */
-        
+        order: 1; 
         z-index: 1001;
     }
     
     /* 4. توسط الشعار */
     .logo {
         font-size: 1.2rem;
-        /* ******* التعديل: توسط المساحة المتبقية بـ Flexbox ******* */
         flex-grow: 1;
         text-align: center;
         margin: 0; 
-        order: 2; /* يوضع في المنتصف */
-        /* ************************************************************ */
+        order: 2; 
     }
 
     /* 5. إعداد القائمة المنسدلة (Navigation Menu) */
     header nav {
         display: none; 
-        /* ******* التعديل: استخدام position: fixed لثبات أكبر عند التكبير ******* */
         position: fixed;
-        top: 60px; /* تحت الشريط العلوي */
+        top: 60px; 
         right: 0;
-        left: 0; /* لضمان تغطية كامل العرض */
+        left: 0; 
         width: 100%;
-        /* ************************************************************ */
-
-        /* تطبيق الشفافية (80%) */
         background-color: rgba(255, 255, 255, 0.80); 
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         z-index: 999; 
         transition: transform 0.3s ease-in-out;
-        /* إخفاء القائمة للأعلى في البداية */
         transform: translateY(-100%); 
     }
 
@@ -486,7 +457,7 @@ footer {
     /* 7. إظهار القائمة عند تفعيل فئة .active */
     header nav.active {
         display: block;
-        transform: translateY(0); /* إنزال القائمة لتظهر */
+        transform: translateY(0); 
     }
     
     /* 8. تصغير حجم خط قسم الترحيب */
@@ -505,5 +476,4 @@ footer {
     .large-icons a {
         font-size: 2.5rem;
     }
-        }
-        
+    }
