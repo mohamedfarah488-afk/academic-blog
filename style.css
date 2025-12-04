@@ -18,8 +18,6 @@ body {
     line-height: 1.8; 
     color: var(--text-color);
     background-color: #fff;
-    /* 🔴 التعديل الحاسم: منع التجاوز الأفقي على مستوى الصفحة */
-    overflow-x: hidden; 
 }
 
 a {
@@ -35,13 +33,13 @@ ul {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
-    width: 100%;
 }
 
 /* ------------------------------------------- */
-/* الهيدر والقائمة (شاشات كبيرة) */
+/* الهيدر والقائمة (شاشات كبيرة - الحاسوب) */
 /* ------------------------------------------- */
 header {
+    /* تم تطبيق الشفافية على الخلفية (70%) باستخدام rgba() */
     background: rgba(255, 255, 255, 0.70); 
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: fixed;
@@ -49,8 +47,6 @@ header {
     top: 0;
     z-index: 1000;
     border-bottom: 1px solid #ddd;
-    /* 🔴 التعديل: منع التجاوز على العنصر المثبت */
-    overflow-x: hidden; 
 }
 
 header .container {
@@ -59,13 +55,16 @@ header .container {
     align-items: center;
     height: 70px;
     position: relative; 
+    /* إفساح المجال للصورة الشخصية */
     padding-left: 140px; 
 }
 
+/* زر الهامبرغر - مخفي على الشاشات الكبيرة */
 .nav-toggle {
-    display: none; /* مخفي في وضع الحاسوب */
+    display: none; 
 }
 
+/* تنسيق الصورة الشخصية في الـ HEADER */
 .header-profile-photo {
     width: 80px; 
     height: 80px;
@@ -94,6 +93,7 @@ header .container {
 .nav-links a {
     font-weight: bold;
     transition: color 0.3s;
+    /* تصغير خط الشريط العلوي على الحاسوب */
     font-size: 0.7rem; 
 }
 
@@ -114,23 +114,23 @@ header .container {
     background: url('academic-background.jpg') no-repeat center center; 
     background-size: cover; 
     color: var(--dark-color); 
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
 }
 
 .hero h1 {
+    /* استعادة حجم خط الترحيب */
     font-size: 3rem; 
     margin-bottom: 1rem;
     color: var(--dark-color);
 }
 
+/* تنسيق اسم الأستاذ */
 .hero h2 {
     font-size: 2.5rem;
     color: var(--dark-color);
     margin-top: 10px;
 }
 
+/* تنسيق الشعار (Slogan) */
 .hero .slogan {
     font-size: 1.3rem; 
     color: var(--dark-color);
@@ -142,6 +142,7 @@ header .container {
     display: inline-block; 
 }
 
+/* لون العنصر المضيء */
 .highlight {
     color: var(--primary-color);
 }
@@ -159,6 +160,7 @@ header .container {
 .btn:hover {
     background: #1d4ed8;
 }
+/* زر ثانوي للسيرة الذاتية */
 .btn-secondary {
     background: #6c757d; 
     margin-right: 15px;
@@ -166,6 +168,7 @@ header .container {
 .btn-secondary:hover {
     background: #5a6268;
 }
+/* زر صغير للكتب */
 .btn-small {
     padding: 8px 18px;
     font-size: 0.9rem;
@@ -184,6 +187,7 @@ header .container {
 
 .section-title {
     text-align: center;
+    /* تصغير خط عناوين الأقسام */
     font-size: 1.8rem; 
     margin-bottom: 40px;
     color: var(--dark-color);
@@ -193,6 +197,7 @@ header .container {
     background-color: var(--light-color);
 }
 
+/* تنسيق السيرة الذاتية */
 .framed-bio-text {
     border: 1px solid #007bff; 
     padding: 15px 20px; 
@@ -217,6 +222,7 @@ header .container {
     margin-top: 10px;
 }
 
+/* تنسيق الكروت (المقالات) */
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -249,6 +255,7 @@ header .container {
     color: var(--primary-color);
 }
 
+/* تنسيقات المؤلفات والمنشورات */
 .book-list {
     display: flex;
     flex-direction: column;
@@ -297,10 +304,10 @@ header .container {
     margin-bottom: 15px !important;
 }
 
+/* تنسيقات التغريدات والأفكار السريعة */
 .tweets-grid {
     display: grid;
-    /* 🔴 التعديل: تقليل الحد الأدنى للعرض ليتوافق مع أضيق الشاشات */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
     margin-top: 40px;
 }
@@ -337,6 +344,7 @@ header .container {
     margin-top: 10px;
 }
 
+/* تنسيق قسم روابط الباحث (Platforms) */
 .social-links {
     display: flex;
     justify-content: center;
@@ -354,6 +362,7 @@ header .container {
     color: var(--dark-color);
 }
 
+/* الفوتر */
 footer {
     background: var(--dark-color);
     color: #fff;
@@ -368,66 +377,59 @@ footer {
 
 @media (max-width: 768px) {
     
+    /* 1. إعداد شريط العنوان للهاتف */
     header .container {
         height: 60px;
         padding: 0 10px;
-        width: 100%; 
-        max-width: 100%;
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
-        gap: 0;
+        justify-content: flex-start;
+        gap: 20px; 
     }
 
-    /* 🔴 التعديل الحاسم: إظهار زر الهامبرغر */
+    /* 2. تصغير حجم الصورة الشخصية */
+    .header-profile-photo {
+        width: 50px;
+        height: 50px;
+        left: 5px; 
+    }
+    
+    /* 3. إظهار زر الهامبرغر - وضعه في أقصى اليسار */
     .nav-toggle {
-        display: block; /* تأكيد ظهور الزر على شاشات الهاتف */
+        display: block; 
         background: none;
         border: none;
         color: var(--primary-color);
         font-size: 1.5rem;
         cursor: pointer;
-        position: static; 
-        order: 1; /* ترتيبه في أقصى اليسار */
+        position: absolute; 
+        left: 10px; /* موقعه في أقصى اليسار */
+        top: 50%;
+        transform: translateY(-50%);
         z-index: 1001;
     }
-
-    .header-profile-photo {
-        width: 50px;
-        height: 50px;
-        position: static; 
-        order: 3; /* ترتيبه في أقصى اليمين */
-        border: 3px solid #007bff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
     
+    /* 4. تصغير الشعار وإزاحة العناصر */
     .logo {
         font-size: 1.2rem;
-        flex-grow: 1;
-        text-align: center;
-        margin: 0; 
-        order: 2; /* ترتيبه في الوسط */
+        margin-right: 70px; /* إفساح المجال لزر الهامبرغر */
     }
 
+    /* 5. إعداد القائمة المنسدلة (Navigation Menu) */
     header nav {
         display: none; 
-        position: fixed;
-        top: 60px; 
+        position: absolute;
+        top: 60px; /* تحت الشريط العلوي */
         right: 0;
-        left: 0; 
         width: 100%;
+        /* تطبيق الشفافية (80%) */
         background-color: rgba(255, 255, 255, 0.80); 
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         z-index: 999; 
         transition: transform 0.3s ease-in-out;
+        /* إخفاء القائمة للأعلى في البداية */
         transform: translateY(-100%); 
     }
 
-    header nav.active {
-        display: block;
-        transform: translateY(0); 
-    }
-    
+    /* 6. تنسيق الروابط داخل القائمة */
     .nav-links {
         flex-direction: column; 
         padding: 10px 0;
@@ -440,16 +442,17 @@ footer {
     .nav-links a {
         display: block;
         padding: 10px 20px;
-        font-size: 0.9rem; 
+        font-size: 1rem;
         text-align: right;
     }
-    
-    /* 🔴 التعديل: معالجة الخلفية لقسم الهيرو */
-    .hero {
-        background-size: 100% 100%;
-        background-attachment: scroll !important; 
+
+    /* 7. إظهار القائمة عند تفعيل فئة .active */
+    header nav.active {
+        display: block;
+        transform: translateY(0); /* إنزال القائمة لتظهر */
     }
     
+    /* 8. تصغير حجم خط قسم الترحيب */
     .hero h1 {
         font-size: 2rem; 
     }
@@ -462,9 +465,8 @@ footer {
         font-size: 1.1rem;
     }
     
-    /* 🔴 التعديل: تصغير هوامش أيقونات الروابط الاجتماعية */
     .large-icons a {
         font-size: 2.5rem;
-        margin: 0 10px; 
     }
-        }
+}
+
