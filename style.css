@@ -383,18 +383,23 @@ footer {
         padding: 0 10px;
         /* توزيع العناصر على أقصى اليمين واليسار */
         justify-content: space-between; 
-        gap: 0; 
+        gap: 0;
+        /* تأكيد تفعيل Flexbox */
+        display: flex; 
     }
 
     /* 2. تصغير حجم الصورة الشخصية وتثبيتها على اليمين */
     .header-profile-photo {
         width: 50px;
         height: 50px;
-        /* نقلها إلى اليمين */
+        /* إرجاعها إلى اليمين */
         left: unset; 
-        right: 5px; /* تثبيتها على اليمين */
+        right: 5px; 
         top: 50%; 
         transform: translateY(-50%); 
+        /* تعديل: جعلها جزءاً من الـ Flex flow */
+        position: static; 
+        order: 3; /* ترتيبها الثالث (يمين الشاشة) */
     }
     
     /* 3. إظهار زر الهامبرغر - وضعه في أقصى اليسار */
@@ -405,21 +410,30 @@ footer {
         color: var(--primary-color);
         font-size: 1.5rem;
         cursor: pointer;
-        position: absolute; 
-        /* موقعه في أقصى اليسار */
-        left: 10px; 
-        right: unset; 
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 1001;
+        /* جعله جزءاً من الـ Flex flow */
+        position: static; 
+        order: 1; /* ترتيبه الأول (يسار الشاشة) */
+        
+        /* إزالة التنسيقات المطلقة السابقة ليعمل مع Flex */
+        left: unset; 
+        right: unset;
+        top: unset;
+        transform: unset;
+        
+        /* ضبط المحاذاة العمودية */
+        margin: 5px; 
     }
     
-    /* 4. تصغير الشعار وإزاحة العناصر */
+    /* 4. توسط الشعار */
     .logo {
         font-size: 1.2rem;
-        margin-right: 0; 
-        /* هامش لليسار لإبعاده عن زر الهامبرغر */
-        margin-left: 55px; 
+        /* التوسط عن طريق إلغاء الهوامش الثابتة */
+        margin: 0 auto; 
+        /* ترتيبه في المنتصف */
+        order: 2; 
+        /* لضمان التوسط الفعال بين زر القائمة والصورة */
+        flex-grow: 1; 
+        text-align: center;
     }
 
     /* 5. إعداد القائمة المنسدلة (Navigation Menu) */
@@ -427,15 +441,12 @@ footer {
         display: none; 
         position: absolute;
         top: 60px; /* تحت الشريط العلوي */
-        /* توجيه القائمة لتبدأ من اليسار (حيث زر الهامبرغر) */
         right: 0; 
         width: 100%;
-        /* تطبيق الشفافية (80%) */
         background-color: rgba(255, 255, 255, 0.80); 
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         z-index: 999; 
         transition: transform 0.3s ease-in-out;
-        /* إخفاء القائمة للأعلى في البداية */
         transform: translateY(-100%); 
     }
 
@@ -459,7 +470,7 @@ footer {
     /* 7. إظهار القائمة عند تفعيل فئة .active */
     header nav.active {
         display: block;
-        transform: translateY(0); /* إنزال القائمة لتظهر */
+        transform: translateY(0); 
     }
     
     /* 8. تصغير حجم خط قسم الترحيب */
