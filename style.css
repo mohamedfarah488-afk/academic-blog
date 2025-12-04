@@ -18,7 +18,7 @@ body {
     line-height: 1.8; 
     color: var(--text-color);
     background-color: #fff;
-    /* تأكيد منع التجاوز الأفقي على مستوى الصفحة */
+    /* 🔴 التعديل الحاسم: منع التجاوز الأفقي على مستوى الصفحة */
     overflow-x: hidden; 
 }
 
@@ -35,6 +35,7 @@ ul {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
+    /* 🔴 التعديل: تأكيد العرض الكامل للحاوية */
     width: 100%;
 }
 
@@ -49,7 +50,7 @@ header {
     top: 0;
     z-index: 1000;
     border-bottom: 1px solid #ddd;
-    /* ******* الإضافة الحاسمة: منع التجاوز على العنصر المثبت ******* */
+    /* 🔴 التعديل: منع التجاوز على العنصر المثبت (Fixed Element) */
     overflow-x: hidden; 
 }
 
@@ -114,6 +115,7 @@ header .container {
     background: url('academic-background.jpg') no-repeat center center; 
     background-size: cover; 
     color: var(--dark-color); 
+    /* 🔴 التعديل: تأمين عرض قسم الهيرو */
     width: 100%;
     max-width: 100%;
     min-width: 0;
@@ -371,6 +373,7 @@ footer {
     header .container {
         height: 60px;
         padding: 0 10px;
+        /* 🔴 التعديل: تأكيد عرض 100% ومنع التجاوز */
         width: 100%; 
         max-width: 100%;
         display: flex; 
@@ -450,7 +453,7 @@ footer {
     .nav-links a {
         display: block;
         padding: 10px 20px;
-        /* ******* التعديل النهائي: تصغير حجم الخط ******* */
+        /* 🔴 التعديل: تصغير حجم الخط لضمان عدم التجاوز عند التكبير */
         font-size: 0.9rem; 
         text-align: right;
     }
