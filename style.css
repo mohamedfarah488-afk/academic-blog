@@ -381,11 +381,10 @@ footer {
     header .container {
         height: 60px;
         padding: 0 10px;
-        /* استخدام Flexbox لتوزيع العناصر */
+        /* ******* التعديل: استخدام Flexbox للتوسيط العمودي الآمن ******* */
         display: flex; 
         justify-content: space-between; 
-        /* هام جداً: التوسيط العمودي يتم هنا بواسطة Flexbox */
-        align-items: center; 
+        align-items: center; /* التوسيط العمودي */
         gap: 0;
     }
 
@@ -396,16 +395,15 @@ footer {
         border-radius: 50%;
         object-fit: cover;
         
-        /* ******* إلغاء الموضع المطلق لتجنب مشاكل التكبير ******* */
+        /* ******* التعديل: إلغاء الموضع المطلق والاعتماد على Flexbox ******* */
         position: static; 
+        left: unset; 
         top: unset; 
         transform: unset; 
         right: unset;
-        left: unset;
-        /* ****************************************************** */
+        order: 3; /* يوضع على اليمين */
+        /* ************************************************************ */
         
-        /* وضعها في الترتيب الثالث (على اليمين) */
-        order: 3; 
         border: 3px solid #007bff;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         z-index: 100;
@@ -420,37 +418,40 @@ footer {
         font-size: 1.5rem;
         cursor: pointer;
         
-        /* ******* إلغاء الموضع المطلق لتجنب مشاكل التكبير ******* */
+        /* ******* التعديل: إلغاء الموضع المطلق والاعتماد على Flexbox ******* */
         position: static; 
+        left: unset; 
         top: unset;
         transform: unset;
-        left: unset;
         right: unset;
-        /* ****************************************************** */
+        order: 1; /* يوضع على اليسار */
+        /* ************************************************************ */
         
-        /* وضعها في الترتيب الأول (على اليسار) */
-        order: 1; 
         z-index: 1001;
     }
     
     /* 4. توسط الشعار */
     .logo {
         font-size: 1.2rem;
-        /* توسيط المحتوى داخله */
+        /* ******* التعديل: توسط المساحة المتبقية بـ Flexbox ******* */
+        flex-grow: 1;
         text-align: center;
-        /* ليتوسط المسافة المتبقية بين الأيقونات */
-        flex-grow: 1; 
-        margin: 0; /* إلغاء الهوامش الثابتة التي أضيفت سابقاً */
-        order: 2; /* وضعها في المنتصف */
+        margin: 0; 
+        order: 2; /* يوضع في المنتصف */
+        /* ************************************************************ */
     }
-    
+
     /* 5. إعداد القائمة المنسدلة (Navigation Menu) */
     header nav {
         display: none; 
-        position: absolute;
+        /* ******* التعديل: استخدام position: fixed لثبات أكبر عند التكبير ******* */
+        position: fixed;
         top: 60px; /* تحت الشريط العلوي */
         right: 0;
+        left: 0; /* لضمان تغطية كامل العرض */
         width: 100%;
+        /* ************************************************************ */
+
         /* تطبيق الشفافية (80%) */
         background-color: rgba(255, 255, 255, 0.80); 
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -459,7 +460,7 @@ footer {
         /* إخفاء القائمة للأعلى في البداية */
         transform: translateY(-100%); 
     }
-    
+
     /* 6. تنسيق الروابط داخل القائمة */
     .nav-links {
         flex-direction: column; 
@@ -499,5 +500,4 @@ footer {
     .large-icons a {
         font-size: 2.5rem;
     }
-                                  }
-    
+}
