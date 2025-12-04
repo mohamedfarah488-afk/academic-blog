@@ -859,7 +859,7 @@ z-index: 1001;
 
 .logo {
 
-font-size: 1.2rem;
+font-size: 1.5rem;
 
 /* ******* التعديل: توسط المساحة المتبقية بـ Flexbox ******* */
 
@@ -887,7 +887,7 @@ display: none;
 
 position: fixed;
 
-top: 60px; /* تحت الشريط العلوي */
+top: 100px; /* تحت الشريط العلوي */
 
 right: 0;
 
@@ -990,6 +990,7 @@ font-size: 2.5rem;
 }
 
 }
+
 
 
 
