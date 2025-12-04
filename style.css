@@ -381,11 +381,18 @@ footer {
     header .container {
         height: 60px;
         padding: 0 10px;
-        /* ******* التعديل: استخدام Flexbox للتوسيط العمودي الآمن ******* */
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; /* التوسيط العمودي */
-        gap: 0;
+        
+        /* ******* الحل النهائي: استخدام Grid لثبات فائق عند التكبير ******* */
+        display: grid;
+        /* ثلاث أعمدة: الأيقونة (50px)، الشعار (باقي المساحة)، الصورة (50px) */
+        grid-template-columns: 50px 1fr 50px; 
+        align-items: center; /* التوسيط العمودي الآمن */
+        justify-items: center; /* توسيط العناصر داخل العمود أفقياً */
+        /* ************************************************************ */
+        
+        /* إزالة Flexbox properties الزائدة لتجنب التعارض */
+        justify-content: unset; 
+        gap: unset;
     }
 
     /* 2. تصغير حجم الصورة الشخصية وتثبيتها على اليمين */
@@ -395,18 +402,16 @@ footer {
         border-radius: 50%;
         object-fit: cover;
         
-        /* ******* التعديل: إلغاء الموضع المطلق والاعتماد على Flexbox ******* */
+        /* ******* تحديد الموضع في الشبكة ******* */
         position: static; 
-        left: unset; 
-        top: unset; 
-        transform: unset; 
-        right: unset;
-        order: 3; /* يوضع على اليمين */
-        /* ************************************************************ */
+        grid-column: 3 / 4; /* العمود الثالث */
+        /* ************************************** */
         
         border: 3px solid #007bff;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         z-index: 100;
+        /* إزالة أي خصائص Flexbox قديمة */
+        order: unset;
     }
     
     /* 3. إظهار زر الهامبرغر - وضعه في أقصى اليسار */
@@ -418,46 +423,42 @@ footer {
         font-size: 1.5rem;
         cursor: pointer;
         
-        /* ******* التعديل: إلغاء الموضع المطلق والاعتماد على Flexbox ******* */
+        /* ******* تحديد الموضع في الشبكة ******* */
         position: static; 
-        left: unset; 
-        top: unset;
-        transform: unset;
-        right: unset;
-        order: 1; /* يوضع على اليسار */
-        /* ************************************************************ */
+        grid-column: 1 / 2; /* العمود الأول */
+        /* ************************************** */
         
         z-index: 1001;
+        /* إزالة أي خصائص Flexbox قديمة */
+        order: unset;
     }
     
     /* 4. توسط الشعار */
     .logo {
         font-size: 1.2rem;
-        /* ******* التعديل: توسط المساحة المتبقية بـ Flexbox ******* */
-        flex-grow: 1;
+        /* ******* تحديد الموضع في الشبكة ******* */
+        grid-column: 2 / 3; /* العمود الثاني (المتوسط) */
         text-align: center;
+        /* ************************************** */
+
+        /* إزالة أي خصائص Flexbox قديمة */
+        flex-grow: unset;
         margin: 0; 
-        order: 2; /* يوضع في المنتصف */
-        /* ************************************************************ */
+        order: unset; 
     }
 
     /* 5. إعداد القائمة المنسدلة (Navigation Menu) */
     header nav {
         display: none; 
-        /* ******* التعديل: استخدام position: fixed لثبات أكبر عند التكبير ******* */
-        position: fixed;
+        position: fixed; /* يبقى fixed لضمان ثبات القائمة عند التمرير */
         top: 60px; /* تحت الشريط العلوي */
         right: 0;
-        left: 0; /* لضمان تغطية كامل العرض */
+        left: 0; 
         width: 100%;
-        /* ************************************************************ */
-
-        /* تطبيق الشفافية (80%) */
         background-color: rgba(255, 255, 255, 0.80); 
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         z-index: 999; 
         transition: transform 0.3s ease-in-out;
-        /* إخفاء القائمة للأعلى في البداية */
         transform: translateY(-100%); 
     }
 
@@ -481,7 +482,7 @@ footer {
     /* 7. إظهار القائمة عند تفعيل فئة .active */
     header nav.active {
         display: block;
-        transform: translateY(0); /* إنزال القائمة لتظهر */
+        transform: translateY(0); 
     }
     
     /* 8. تصغير حجم خط قسم الترحيب */
@@ -500,4 +501,4 @@ footer {
     .large-icons a {
         font-size: 2.5rem;
     }
-}
+    }
