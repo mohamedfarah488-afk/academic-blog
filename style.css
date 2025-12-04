@@ -64,7 +64,7 @@ header .container {
     display: none; 
 }
 
-/* تنسيق الصورة الشخصية في الـ HEADER */
+/* تنسيق الصورة الشخصية في الـ HEADER (تصحيح المحاذاة على الشاشات الكبيرة) */
 .header-profile-photo {
     width: 80px; 
     height: 80px;
@@ -72,10 +72,10 @@ header .container {
     object-fit: cover;
     position: absolute; 
     left: 20px; 
-    /* التعديل: تثبيت الصورة لتتدلى قليلاً من الهيدر */
-    top: 70px; 
+    /* ******* تعديل المحاذاة للشاشة الكبيرة: نرفع الصورة قليلاً لتتوسط الهيدر 70px وتتدلى أسفله ******* */
+    top: 50%; 
     transform: translateY(-50%); 
-    
+    /* ************************************************************************************************* */
     border: 3px solid #007bff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 100; 
@@ -383,7 +383,7 @@ footer {
     header .container {
         height: 60px;
         padding: 0 10px;
-        /* استخدام justify-content: space-between لتوزيع العناصر الثلاثة */
+        /* توزيع العناصر على أقصى اليمين واليسار */
         justify-content: space-between; 
         align-items: center; 
         gap: 0;
@@ -395,13 +395,13 @@ footer {
         height: 50px;
         border-radius: 50%; 
         object-fit: cover;
-        /* ******* التعديل هنا ******* */
+        /* ******* التعديل هنا: المحاذاة العمودية الصحيحة للهاتف ******* */
         position: absolute; 
         left: unset; 
         right: 5px; /* تثبيتها على اليمين */
-        top: 50%; /* وسط الشريط */
+        top: 50%; /* وسط الشريط 60px */
         transform: translateY(-50%); /* إرجاعها لنصف ارتفاعها لضمان التوسط */
-        /* ************************* */
+        /* ************************************************************ */
         border: 3px solid #007bff;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         z-index: 100; 
@@ -415,22 +415,22 @@ footer {
         color: var(--primary-color);
         font-size: 1.5rem;
         cursor: pointer;
-        /* ******* التعديل هنا ******* */
+        /* ******* التعديل هنا: المحاذاة العمودية الصحيحة للهاتف ******* */
         position: absolute; 
         left: 10px; 
         right: unset; 
-        top: 50%; /* وسط الشريط */
+        top: 50%; /* وسط الشريط 60px */
         transform: translateY(-50%); /* إرجاعها لنصف ارتفاعها لضمان التوسط */
-        /* ************************* */
+        /* ************************************************************ */
         z-index: 1001;
     }
     
     /* 4. توسط الشعار */
     .logo {
         font-size: 1.2rem;
+        /* التوسط الأفق بين الأيقونات */
         margin: 0 auto;
-        /* إفساح المجال للعناصر ذات الموضع المطلق */
-        padding: 0 60px; 
+        padding: 0 60px; /* لإفساح المجال لعناصر position: absolute */
         text-align: center;
     }
 
@@ -488,3 +488,4 @@ footer {
         font-size: 2.5rem;
     }
     }
+        
