@@ -72,10 +72,10 @@ header .container {
     object-fit: cover;
     position: absolute; 
     left: 20px; 
-    /* ******** التعديل لتخفيض الصورة ********* */
+    /* التعديل: تثبيت الصورة لتتدلى قليلاً من الهيدر */
     top: 70px; 
     transform: translateY(-50%); 
-    /* *************************************** */
+    
     border: 3px solid #007bff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 100; 
@@ -383,25 +383,28 @@ footer {
     header .container {
         height: 60px;
         padding: 0 10px;
-        /* توزيع العناصر على أقصى اليمين واليسار */
+        /* استخدام justify-content: space-between لتوزيع العناصر الثلاثة */
         justify-content: space-between; 
+        align-items: center; 
         gap: 0;
-        /* تأكيد تفعيل Flexbox */
-        display: flex; 
     }
 
     /* 2. تصغير حجم الصورة الشخصية وتثبيتها على اليمين */
     .header-profile-photo {
         width: 50px;
         height: 50px;
-        /* إرجاعها إلى اليمين */
+        border-radius: 50%; 
+        object-fit: cover;
+        /* ******* التعديل هنا ******* */
+        position: absolute; 
         left: unset; 
-        right: 5px; 
-        top: 50%; 
-        transform: translateY(-50%); 
-        /* تعديل: جعلها جزءاً من الـ Flex flow */
-        position: static; 
-        order: 3; /* ترتيبها الثالث (يمين الشاشة) */
+        right: 5px; /* تثبيتها على اليمين */
+        top: 50%; /* وسط الشريط */
+        transform: translateY(-50%); /* إرجاعها لنصف ارتفاعها لضمان التوسط */
+        /* ************************* */
+        border: 3px solid #007bff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 100; 
     }
     
     /* 3. إظهار زر الهامبرغر - وضعه في أقصى اليسار */
@@ -412,29 +415,22 @@ footer {
         color: var(--primary-color);
         font-size: 1.5rem;
         cursor: pointer;
-        /* جعله جزءاً من الـ Flex flow */
-        position: static; 
-        order: 1; /* ترتيبه الأول (يسار الشاشة) */
-        
-        /* إزالة التنسيقات المطلقة السابقة ليعمل مع Flex */
-        left: unset; 
-        right: unset;
-        top: unset;
-        transform: unset;
-        
-        /* ضبط المحاذاة العمودية */
-        margin: 5px; 
+        /* ******* التعديل هنا ******* */
+        position: absolute; 
+        left: 10px; 
+        right: unset; 
+        top: 50%; /* وسط الشريط */
+        transform: translateY(-50%); /* إرجاعها لنصف ارتفاعها لضمان التوسط */
+        /* ************************* */
+        z-index: 1001;
     }
     
     /* 4. توسط الشعار */
     .logo {
         font-size: 1.2rem;
-        /* التوسط عن طريق إلغاء الهوامش الثابتة */
-        margin: 0 auto; 
-        /* ترتيبه في المنتصف */
-        order: 2; 
-        /* لضمان التوسط الفعال بين زر القائمة والصورة */
-        flex-grow: 1; 
+        margin: 0 auto;
+        /* إفساح المجال للعناصر ذات الموضع المطلق */
+        padding: 0 60px; 
         text-align: center;
     }
 
@@ -492,4 +488,3 @@ footer {
         font-size: 2.5rem;
     }
     }
-        
