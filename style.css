@@ -64,7 +64,7 @@ header .container {
     display: none; 
 }
 
-/* تنسيق الصورة الشخصية في الـ HEADER (تصحيح المحاذاة على الشاشات الكبيرة) */
+/* تنسيق الصورة الشخصية في الـ HEADER */
 .header-profile-photo {
     width: 80px; 
     height: 80px;
@@ -72,10 +72,8 @@ header .container {
     object-fit: cover;
     position: absolute; 
     left: 20px; 
-    /* ******* تعديل المحاذاة للشاشة الكبيرة: نرفع الصورة قليلاً لتتوسط الهيدر 70px وتتدلى أسفله ******* */
     top: 50%; 
     transform: translateY(-50%); 
-    /* ************************************************************************************************* */
     border: 3px solid #007bff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 100; 
@@ -383,8 +381,10 @@ footer {
     header .container {
         height: 60px;
         padding: 0 10px;
-        /* توزيع العناصر على أقصى اليمين واليسار */
+        /* استخدام Flexbox لتوزيع العناصر */
+        display: flex; 
         justify-content: space-between; 
+        /* هام جداً: التوسيط العمودي يتم هنا بواسطة Flexbox */
         align-items: center; 
         gap: 0;
     }
@@ -393,18 +393,22 @@ footer {
     .header-profile-photo {
         width: 50px;
         height: 50px;
-        border-radius: 50%; 
+        border-radius: 50%;
         object-fit: cover;
-        /* ******* التعديل هنا: المحاذاة العمودية الصحيحة للهاتف ******* */
-        position: absolute; 
-        left: unset; 
-        right: 5px; /* تثبيتها على اليمين */
-        top: 50%; /* وسط الشريط 60px */
-        transform: translateY(-50%); /* إرجاعها لنصف ارتفاعها لضمان التوسط */
-        /* ************************************************************ */
+        
+        /* ******* إلغاء الموضع المطلق لتجنب مشاكل التكبير ******* */
+        position: static; 
+        top: unset; 
+        transform: unset; 
+        right: unset;
+        left: unset;
+        /* ****************************************************** */
+        
+        /* وضعها في الترتيب الثالث (على اليمين) */
+        order: 3; 
         border: 3px solid #007bff;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        z-index: 100; 
+        z-index: 100;
     }
     
     /* 3. إظهار زر الهامبرغر - وضعه في أقصى اليسار */
@@ -415,39 +419,47 @@ footer {
         color: var(--primary-color);
         font-size: 1.5rem;
         cursor: pointer;
-        /* ******* التعديل هنا: المحاذاة العمودية الصحيحة للهاتف ******* */
-        position: absolute; 
-        left: 10px; 
-        right: unset; 
-        top: 50%; /* وسط الشريط 60px */
-        transform: translateY(-50%); /* إرجاعها لنصف ارتفاعها لضمان التوسط */
-        /* ************************************************************ */
+        
+        /* ******* إلغاء الموضع المطلق لتجنب مشاكل التكبير ******* */
+        position: static; 
+        top: unset;
+        transform: unset;
+        left: unset;
+        right: unset;
+        /* ****************************************************** */
+        
+        /* وضعها في الترتيب الأول (على اليسار) */
+        order: 1; 
         z-index: 1001;
     }
     
     /* 4. توسط الشعار */
     .logo {
         font-size: 1.2rem;
-        /* التوسط الأفق بين الأيقونات */
-        margin: 0 auto;
-        padding: 0 60px; /* لإفساح المجال لعناصر position: absolute */
+        /* توسيط المحتوى داخله */
         text-align: center;
+        /* ليتوسط المسافة المتبقية بين الأيقونات */
+        flex-grow: 1; 
+        margin: 0; /* إلغاء الهوامش الثابتة التي أضيفت سابقاً */
+        order: 2; /* وضعها في المنتصف */
     }
-
+    
     /* 5. إعداد القائمة المنسدلة (Navigation Menu) */
     header nav {
         display: none; 
         position: absolute;
         top: 60px; /* تحت الشريط العلوي */
-        right: 0; 
+        right: 0;
         width: 100%;
+        /* تطبيق الشفافية (80%) */
         background-color: rgba(255, 255, 255, 0.80); 
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         z-index: 999; 
         transition: transform 0.3s ease-in-out;
+        /* إخفاء القائمة للأعلى في البداية */
         transform: translateY(-100%); 
     }
-
+    
     /* 6. تنسيق الروابط داخل القائمة */
     .nav-links {
         flex-direction: column; 
@@ -468,7 +480,7 @@ footer {
     /* 7. إظهار القائمة عند تفعيل فئة .active */
     header nav.active {
         display: block;
-        transform: translateY(0); 
+        transform: translateY(0); /* إنزال القائمة لتظهر */
     }
     
     /* 8. تصغير حجم خط قسم الترحيب */
@@ -487,5 +499,5 @@ footer {
     .large-icons a {
         font-size: 2.5rem;
     }
-    }
-        
+                                  }
+    
