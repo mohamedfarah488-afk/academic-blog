@@ -11,14 +11,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Tajawal', sans-serif;
+    font-family: 'Tajawal', sans-serif; 
 }
 
 body {
     line-height: 1.8; 
     color: var(--text-color);
     background-color: #fff;
-    margin: 0; /* حل مشكلة الحواف البيضاء */
+    margin: 0; /* تم التأكد من إزالة الهوامش الخارجية */
 }
 
 a {
@@ -137,10 +137,11 @@ header nav {
     color: var(--dark-color);
     margin-top: 10px;
 }
-/* ... تنسيقات الأقسام الأخرى ... */
+/* ... باقي تنسيقات الأقسام الأخرى ... */
 
 /* ------------------------------------------- */
 /* تنسيقات الهاتف (Mobile) وقائمة الهامبرغر */
+/* الترتيب: الهمبرغر (يسار) - الشعار (وسط) - الصورة (يمين) */
 /* ------------------------------------------- */
 
 @media (max-width: 768px) {
@@ -158,7 +159,7 @@ header nav {
         width: 50px;
         height: 50px;
         position: absolute; 
-        right: 10px; /* ثبت الصورة في أقصى اليمين */
+        right: 10px; /* مثبتة في أقصى اليمين */
         left: auto; 
         top: 50%;
         transform: translateY(-50%);
@@ -182,11 +183,13 @@ header nav {
         z-index: 1001; 
     }
     
-    /* 4. الشعار - في الوسط */
+    /* 4. الشعار - في الوسط (تم الإصلاح) */
     .logo {
         font-size: 1.2rem;
-        margin-right: 60px; /* إزاحة لليسار بسبب وجود الصورة على اليمين */
-        margin-left: 50px; /* إزاحة لليمين بسبب وجود الزر على اليسار */
+        margin: 0; /* **تعديل: إزالة الهوامش السابقة** */
+        flex-grow: 1; /* **تعديل: لملء المساحة المتبقية** */
+        text-align: center; /* **تعديل: لتوسيط النص فعلياً** */
+        padding: 0 50px; /* لتجنب تداخل النص مع الأيقونات المثبتة */
     }
 
     /* 5. إعداد القائمة المنسدلة (Navigation Menu) */
@@ -195,9 +198,9 @@ header nav {
         position: absolute;
         top: 60px; 
         right: 0;
-        left: 0; /* **التعديل الأهم: لضمان التغطية الكاملة على اليسار** */
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.80); 
+        left: 0; /* **الإصلاح النهائي: يضمن تغطية العرض بالكامل من اليسار لليمين** */
+        width: auto; /* السماح للـ left و right بتحديد العرض */
+        background-color: rgba(255, 255, 255, 0.95); /* زيادة الشفافية */
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         z-index: 999; 
         transition: transform 0.3s ease-in-out;
@@ -227,7 +230,7 @@ header nav {
         transform: translateY(0); 
     }
     
-    /* 8. تصغير حجم خط قسم الترحيب */
+    /* 8. تنسيقات قسم الـ Hero على الهاتف */
     .hero {
         background-position: center; 
         background-size: cover; 
