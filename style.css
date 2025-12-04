@@ -381,15 +381,20 @@ footer {
     header .container {
         height: 60px;
         padding: 0 10px;
-        justify-content: flex-start;
-        gap: 20px; 
+        /* توزيع العناصر على أقصى اليمين واليسار */
+        justify-content: space-between; 
+        gap: 0; 
     }
 
-    /* 2. تصغير حجم الصورة الشخصية */
+    /* 2. تصغير حجم الصورة الشخصية وتثبيتها على اليمين */
     .header-profile-photo {
         width: 50px;
         height: 50px;
-        left: 5px; 
+        /* نقلها إلى اليمين */
+        left: unset; 
+        right: 5px; /* تثبيتها على اليمين */
+        top: 50%; 
+        transform: translateY(-50%); 
     }
     
     /* 3. إظهار زر الهامبرغر - وضعه في أقصى اليسار */
@@ -401,7 +406,9 @@ footer {
         font-size: 1.5rem;
         cursor: pointer;
         position: absolute; 
-        left: 10px; /* موقعه في أقصى اليسار */
+        /* موقعه في أقصى اليسار */
+        left: 10px; 
+        right: unset; 
         top: 50%;
         transform: translateY(-50%);
         z-index: 1001;
@@ -410,7 +417,9 @@ footer {
     /* 4. تصغير الشعار وإزاحة العناصر */
     .logo {
         font-size: 1.2rem;
-        margin-right: 70px; /* إفساح المجال لزر الهامبرغر */
+        margin-right: 0; 
+        /* هامش لليسار لإبعاده عن زر الهامبرغر */
+        margin-left: 55px; 
     }
 
     /* 5. إعداد القائمة المنسدلة (Navigation Menu) */
@@ -418,7 +427,8 @@ footer {
         display: none; 
         position: absolute;
         top: 60px; /* تحت الشريط العلوي */
-        right: 0;
+        /* توجيه القائمة لتبدأ من اليسار (حيث زر الهامبرغر) */
+        right: 0; 
         width: 100%;
         /* تطبيق الشفافية (80%) */
         background-color: rgba(255, 255, 255, 0.80); 
@@ -468,6 +478,5 @@ footer {
     .large-icons a {
         font-size: 2.5rem;
     }
-}
-
-        
+    }
+    
